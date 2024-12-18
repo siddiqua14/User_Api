@@ -1,0 +1,129 @@
+Install dependencies:
+npm install express mongoose jsonwebtoken bcryptjs cookie-parser body-parser dotenv
+npm install --save-dev nodemon
+
+
+## API Endpoints
+### Postman: 
+1. User Registration
+URL: /api/auth/register
+Method: POST
+Body:
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "NIDNumber": "12345678",
+  "phoneNumber": "9876543210",
+  "password": "password123",
+  "bloodGroup": "O+"
+}
+
+Response:
+
+{
+  "message": "User registered successfully"
+}
+
+User Login
+
+URL: /api/auth/login
+
+Method: POST
+
+Body:
+
+{
+  "phoneNumber": "9876543210",
+  "password": "password123"
+}
+
+Response:
+
+{
+  "token": "<JWT_TOKEN>"
+}
+
+Get Single Profile
+
+URL: /api/users/profile
+
+Method: GET
+
+Headers:
+
+Authorization: Bearer <JWT_TOKEN>
+
+Response:
+
+{
+  "_id": "<user_id>",
+  "firstName": "John",
+  "lastName": "Doe",
+  "NIDNumber": "12345678",
+  "phoneNumber": "9876543210",
+  "bloodGroup": "O+"
+}
+
+Get All Profiles
+
+URL: /api/users
+
+Method: GET
+
+Headers:
+
+Authorization: Bearer <JWT_TOKEN>
+
+Response:
+
+[
+  {
+    "_id": "<user_id>",
+    "firstName": "John",
+    "lastName": "Doe",
+    "NIDNumber": "12345678",
+    "phoneNumber": "9876543210",
+    "bloodGroup": "O+"
+  }
+]
+
+Update Profile
+
+URL: /api/users/profile
+
+Method: PUT
+
+Headers:
+
+Authorization: Bearer <JWT_TOKEN>
+
+Body:
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "bloodGroup": "A+"
+}
+
+Response:
+
+{
+  "message": "Profile updated successfully",
+  "user": {
+    "_id": "<user_id>",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "NIDNumber": "12345678",
+    "phoneNumber": "9876543210",
+    "bloodGroup": "A+"
+  }
+}
+
+Delete Profile
+- URL: /api/users/profile
+- Method: DELETE
+- Headers:
+- Authorization: Bearer <JWT_TOKEN>
+- Response: "message": "User deleted successfully"
+
